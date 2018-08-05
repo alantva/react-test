@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "eslint-config-react-app",
+    "eslint:recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "jsx-a11y/href-no-hash": 0,
+    "no-console": [
+      1,
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "camelcase": [
+      "error",
+      {
+        "properties": "always"
+      }
+    ]
+  }
+}

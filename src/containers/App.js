@@ -1,9 +1,33 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { requestResume } from '../reducers/resume';
 
-class App extends Component {
+import FormPage from './FormPage';
+
+class App extends PureComponent {
+  componentDidMount() {
+    this.props.actions.requestResume();
+  }
+
   render() {
-    return <div className="App" />;
+    return (
+      <MuiThemeProvider theme={createMuiTheme()}>
+        <FormPage {...this.props.resume} />
+      </MuiThemeProvider>
+    );
   }
 }
 
-export default App;
+const mapStateToProps = ({ resume }) => ({ resume });
+
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    requestResume: () => dispatch(requestResume())
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
